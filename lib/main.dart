@@ -36,4 +36,8 @@ class MyApp extends StatelessWidget {
   }
 }
 
+// API KEY
+//a2d41dc44929e67f301dcb8ed9a456fd
 
+//API Read Access Token
+//eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMmQ0MWRjNDQ5MjllNjdmMzAxZGNiOGVkOWE0NTZmZCIsInN1YiI6IjY1NTYyMjU5YjU0MDAyMTRkMDZlNGRjZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.BqBT27f2wARv0pnPWIKrrQ3gq9bB4YM3b0j5EV_JYxk
