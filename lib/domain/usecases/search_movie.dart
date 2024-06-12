@@ -1,3 +1,6 @@
+import 'package:dartz/dartz.dart';
+
+import '../../core/error/server_failure.dart';
 import '../entities/Movie.dart';
 import '../repositories/movie_repository.dart';
 
@@ -6,8 +9,7 @@ class SearchMovies{
 
   SearchMovies(this.repository);
 
-  Future<List<Movie>>call(String query)async{
+  Future<Either<Failure, List<Movie>>> call(String query) async {
     return await repository.searchMovies(query);
   }
-
 }

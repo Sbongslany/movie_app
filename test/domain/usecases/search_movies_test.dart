@@ -1,12 +1,11 @@
+import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:movie_app/domain/repositories/movie_repository.dart';
 import 'package:mockito/mockito.dart';
 import 'package:movie_app/domain/usecases/search_movie.dart';
 import 'package:movie_app/domain/entities/Movie.dart';
-import 'get_trending_movies_test.mocks.dart';
-
-@GenerateNiceMocks([MockSpec<MovieRepository>()])
+import 'get_popular_movies_test.mocks.dart';
 
 void main(){
 
@@ -31,7 +30,7 @@ void main(){
 
     //arrange
     when(mockMovieRepository.searchMovies(any))
-        .thenAnswer((_) async => tMoviesList);
+        .thenAnswer((_) async => Right(tMoviesList));
     //act
     final result = await usecase(tQuery);
 

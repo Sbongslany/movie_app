@@ -1,40 +1,33 @@
+import 'package:dartz/dartz.dart';
 import 'package:movie_app/domain/entities/Movie.dart';
-import 'package:movie_app/domain/repositories/movie_repository.dart';
 import 'package:mockito/mockito.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:movie_app/domain/usecases/get_trending_movies.dart';
-import 'package:mockito/annotations.dart';
-
-import 'get_trending_movies_test.mocks.dart';
-
-@GenerateNiceMocks([MockSpec<MovieRepository>()])
+import 'get_popular_movies_test.mocks.dart';
 
 void main(){
- late GetTrendingMovies usecase;
- late MockMovieRepository mockMovieRepository;
+  late GetTrendingMovies usecase;
+  late MockMovieRepository mockMovieRepository;
 
   setUp(() {
     mockMovieRepository = MockMovieRepository();
     usecase = GetTrendingMovies(mockMovieRepository);
   });
 
-  final tMovieList = [
-    Movie(id: 1, title: 'Test Movie 1', overview: 'Disc 1', posterPath: '/image1'),
-    Movie(id: 2, title: 'Test Movie 2', overview: 'Disc 3', posterPath: '/image2'),
-    Movie(id: 3, title: 'Test Movie 3', overview: 'Disc 3', posterPath: '/image3')
-
+  final tMoviesList = [
+    Movie(id: 1, title: "Test Movie 1", overview: "Desc 1", posterPath: "/image1"),
+    Movie(id: 2, title: "Test Movie 2", overview: "Desc 2", posterPath: "/image2"),
   ];
 
   test('should get trending movies from the repository', () async {
-    //arrange
+    // arrange
     when(mockMovieRepository.getTrendingMovies())
-        .thenAnswer((_) async => tMovieList);
-    //act
+        .thenAnswer((_) async => Right(tMoviesList));
+    // act
     final result = await usecase();
-
-    //assert
-    expect(result, tMovieList);
+    // assert
+    expect(result, equals(Right(tMoviesList)));
     verify(mockMovieRepository.getTrendingMovies());
     verifyNoMoreInteractions(mockMovieRepository);
   });
- }
+}
